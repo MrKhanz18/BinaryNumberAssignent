@@ -10,21 +10,21 @@ const Signup = () => {
     mobile: "",
     password: "",
     error: "",
-    success: false
+    success: false,
   });
 
   const { name, email, mobile, password, error, success } = values;
 
-  const handleChange = name => event => {
+  const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
   };
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
     signup({ name, email, mobile, password })
-      .then(data => {
-        if (data.error) {
+      .then((data) => {
+        if (data?.error) {
           setValues({ ...values, error: data.error, success: false });
         } else {
           setValues({
@@ -34,7 +34,7 @@ const Signup = () => {
             mobile: "",
             password: "",
             error: "",
-            success: true
+            success: true,
           });
         }
       })
